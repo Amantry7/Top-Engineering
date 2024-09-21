@@ -313,10 +313,10 @@
                                     <li class="has-dropdown ">
                                         <a href="javascript:void(0)">Pages</a>
                                         <ul class="submenu">
-                                            <li><a href="about-us.html">About us</a></li>
+                                            <li><a href="{% url 'about' %}">About us</a></li>
                                             <li><a href="pricing.html">Pricing</a></li>
                                             <li><a href="team.html">Team</a></li>
-                                            <li><a href="team-details.html">Team Details</a></li>
+                                            <li><a href="{% url 'team_detail'  team.id %}">Team Details</a></li>
                                             <li><a href="404.html">404 Page</a></li>
                                         </ul>
                                     </li>
@@ -708,7 +708,7 @@
             <div class="row mb-minus-30">
                 <div class="col-xl-3 col-md-6">
                     <div class="our-professional__item mb-30">
-                        <a href="team-details.html" class="our-professional__item-media d-block" data-cursor-text="View">
+                        <a href="{% url 'team_detail'  team.id %}" class="our-professional__item-media d-block" data-cursor-text="View">
                             <img src="assets/imgs/our-professional/team-1.jpg" alt="image not found" class="img-fluid">
                         </a>
 
@@ -721,7 +721,7 @@
                         <div class="our-professional__item__content d-flex align-items-center justify-content-center text-center">
 
                             <div class="our-professional__item-text">
-                                <h4 class="our-professional__item-title text-center rr-fw-bold  mb-0"><a href="team-details.html">Alex Jonsion</a></h4>
+                                <h4 class="our-professional__item-title text-center rr-fw-bold  mb-0"><a href="{% url 'team_detail'  team.id %}">Alex Jonsion</a></h4>
                                 <span class="our-professional__item-subtitle text-center">CEO - Co Funder</span>
                             </div>
                         </div>
@@ -732,7 +732,7 @@
                 </div>
                 <div class="col-xl-3 col-md-6">
                     <div class="our-professional__item mb-30">
-                        <a href="team-details.html" class="our-professional__item-media d-block" data-cursor-text="View">
+                        <a href="{% url 'team_detail'  team.id %}" class="our-professional__item-media d-block" data-cursor-text="View">
                             <img src="assets/imgs/our-professional/team-2.jpg" alt="image not found" class="img-fluid">
                         </a>
 
@@ -745,7 +745,7 @@
                         <div class="our-professional__item__content d-flex align-items-center justify-content-center text-center">
 
                             <div class="our-professional__item-text">
-                                <h4 class="our-professional__item-title text-center rr-fw-bold  mb-0"><a href="team-details.html">Eduard Nail</a></h4>
+                                <h4 class="our-professional__item-title text-center rr-fw-bold  mb-0"><a href="{% url 'team_detail'  team.id %}">Eduard Nail</a></h4>
                                 <span class="our-professional__item-subtitle text-center">Architect</span>
                             </div>
                         </div>
@@ -756,7 +756,7 @@
                 </div>
                 <div class="col-xl-3 col-md-6">
                     <div class="our-professional__item mb-30">
-                        <a href="team-details.html" class="our-professional__item-media d-block" data-cursor-text="View">
+                        <a href="{% url 'team_detail'  team.id %}" class="our-professional__item-media d-block" data-cursor-text="View">
                             <img src="assets/imgs/our-professional/team-3.jpg" alt="image not found" class="img-fluid">
                         </a>
 
@@ -769,7 +769,7 @@
                         <div class="our-professional__item__content d-flex align-items-center justify-content-center text-center">
 
                             <div class="our-professional__item-text">
-                                <h4 class="our-professional__item-title text-center rr-fw-bold  mb-0"><a href="team-details.html">Jason Joy</a></h4>
+                                <h4 class="our-professional__item-title text-center rr-fw-bold  mb-0"><a href="{% url 'team_detail'  team.id %}">Jason Joy</a></h4>
                                 <span class="our-professional__item-subtitle text-center">Contractor </span>
                             </div>
                         </div>
@@ -780,7 +780,7 @@
                 </div>
                 <div class="col-xl-3 col-md-6">
                     <div class="our-professional__item mb-30">
-                        <a href="team-details.html" class="our-professional__item-media d-block" data-cursor-text="View">
+                        <a href="{% url 'team_detail'  team.id %}" class="our-professional__item-media d-block" data-cursor-text="View">
                             <img src="assets/imgs/our-professional/team-4.jpg" alt="image not found" class="img-fluid">
                         </a>
 
@@ -793,7 +793,7 @@
                         <div class="our-professional__item__content d-flex align-items-center justify-content-center text-center">
 
                             <div class="our-professional__item-text">
-                                <h4 class="our-professional__item-title text-center rr-fw-bold  mb-0"><a href="team-details.html">Laura Lepia</a></h4>
+                                <h4 class="our-professional__item-title text-center rr-fw-bold  mb-0"><a href="{% url 'team_detail'  team.id %}">Laura Lepia</a></h4>
                                 <span class="our-professional__item-subtitle text-center">Roof Designer</span>
                             </div>
                         </div>
@@ -1502,9 +1502,9 @@
                             </div>
                             <div class="footer-3__link">
                                 <ul>
-                                    <li><a href="about-us.html">About Us</a></li>
+                                    <li><a href="{% url 'about' %}">About Us</a></li>
                                     <li><a href="team.html">Our Team</a></li>
-                                    <li><a href="team-details.html">Testimonials</a></li>
+                                    <li><a href="{% url 'team_detail'  team.id %}">Testimonials</a></li>
                                     <li><a href="blog.html">Blog Grid</a></li>
                                     <li><a href="project.html">Projects</a></li>
                                     <li><a href="contact.html">Contact Us</a></li>
@@ -1617,7 +1617,7 @@
                     <div class="col-lg-6">
                         <div class="footer-3__copyright-menu">
                             <ul>
-                                <li><a href="about-us.html">Privacy Policy</a></li>
+                                <li><a href="{% url 'about' %}">Privacy Policy</a></li>
                                 <li><a href="contact.html">Terms & Conditions</a></li>
                             </ul>
                         </div>

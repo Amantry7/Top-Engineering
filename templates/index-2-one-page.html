@@ -452,7 +452,7 @@
                             <p class="description">Sponsoring and manaing work visas parts becoming results for fullfill your dream wishes</p>
 
                             <div class="about-us-2__btn-box">
-                                <a href="about-us.html" class="rr-btn">
+                                <a href="{% url 'about' %}" class="rr-btn">
                                     <span class="btn-wrap">
                                         <span class="text-one">Discover More</span>
                                         <span class="text-two">Discover More</span>
@@ -612,7 +612,7 @@
                 </div>
                 <div class="col-xl-6">
                     <div class="d-flex justify-content-xl-end mt-xs-20 mt-sm-20 mt-md-20 mt-lg-20 justify-content-center rr-mb-13-hide-xl">
-                        <a href="about-us.html" class="rr-btn">
+                        <a href="{% url 'about' %}" class="rr-btn">
                             <span class="btn-wrap">
                                 <span class="text-one">View All Projects</span>
                                 <span class="text-two">View All Projects</span>
@@ -748,7 +748,7 @@
             <div class="row mb-minus-30">
                 <div class="col-xl-4 col-md-6">
                     <div class="team__item mb-30">
-                        <a href="team-details.html" class="team__item-media d-block" data-cursor-text="View">
+                        <a href="{% url 'team_detail'  team.id %}" class="team__item-media d-block" data-cursor-text="View">
                             <img src="assets/imgs/team/team-item-1.jpg" alt="image not found" class="img-fluid">
                         </a>
 
@@ -761,7 +761,7 @@
                             </div>
 
                             <div class="team__item-text__left">
-                                <h4 class="team__item-title rr-fw-bold color-white mb-0"><a href="team-details.html">James Williams</a></h4>
+                                <h4 class="team__item-title rr-fw-bold color-white mb-0"><a href="{% url 'team_detail'  team.id %}">James Williams</a></h4>
                                 <span class="team__item-subtitle color-white">Operations Manager</span>
                             </div>
                             <div class="team__item-text__right">
@@ -773,7 +773,7 @@
 
                 <div class="col-xl-4 col-md-6">
                     <div class="team__item mb-30">
-                        <a href="team-details.html" class="team__item-media d-block" data-cursor-text="View">
+                        <a href="{% url 'team_detail'  team.id %}" class="team__item-media d-block" data-cursor-text="View">
                             <img src="assets/imgs/team/team-item-2.jpg" alt="image not found" class="img-fluid">
                         </a>
 
@@ -786,7 +786,7 @@
                             </div>
 
                             <div class="team__item-text__left">
-                                <h4 class="team__item-title rr-fw-bold color-white mb-0"><a href="team-details.html">Anthony Notson</a></h4>
+                                <h4 class="team__item-title rr-fw-bold color-white mb-0"><a href="{% url 'team_detail'  team.id %}">Anthony Notson</a></h4>
                                 <span class="team__item-subtitle color-white">Production Manager</span>
                             </div>
                             <div class="team__item-text__right">
@@ -798,7 +798,7 @@
 
                 <div class="col-xl-4 col-md-6">
                     <div class="team__item mb-30">
-                        <a href="team-details.html" class="team__item-media d-block" data-cursor-text="View">
+                        <a href="{% url 'team_detail'  team.id %}" class="team__item-media d-block" data-cursor-text="View">
                             <img src="assets/imgs/team/team-item-3.jpg" alt="image not found" class="img-fluid">
                         </a>
 
@@ -811,7 +811,7 @@
                             </div>
 
                             <div class="team__item-text__left">
-                                <h4 class="team__item-title rr-fw-bold color-white mb-0"><a href="team-details.html">Joseph Crawford</a></h4>
+                                <h4 class="team__item-title rr-fw-bold color-white mb-0"><a href="{% url 'team_detail'  team.id %}">Joseph Crawford</a></h4>
                                 <span class="team__item-subtitle color-white">Chief Marketing</span>
                             </div>
                             <div class="team__item-text__right">
@@ -2807,9 +2807,9 @@
                             </div>
                             <div class="footer-2__link">
                                 <ul>
-                                    <li><a href="about-us.html">About Us</a></li>
+                                    <li><a href="{% url 'about' %}">About Us</a></li>
                                     <li><a href="team.html">Our Team</a></li>
-                                    <li><a href="team-details.html">Testimonials</a></li>
+                                    <li><a href="{% url 'team_detail'  team.id %}">Testimonials</a></li>
                                     <li><a href="blog.html">Blog Grid</a></li>
                                     <li><a href="project.html">Projects</a></li>
                                     <li><a href="contact.html">Contact Us</a></li>
@@ -2928,7 +2928,7 @@
                     <div class="col-xl-4">
                         <div class="footer-2__copyright-menu">
                             <ul>
-                                <li><a href="about-us.html">Privacy Policy</a></li>
+                                <li><a href="{% url 'about' %}">Privacy Policy</a></li>
                                 <li><a href="contact.html">Terms & Conditions</a></li>
                             </ul>
                         </div>

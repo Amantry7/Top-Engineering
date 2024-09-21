@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from apps.base.models import Setting, Slider, About, AboutService, AboutState, AboutSkill, Choose, Contact
+from apps.base.models import Setting, Slider, About, AboutService, AboutState, AboutSkill, Choose, Contact, WorkProcessStep
 # Register your models here.
 
 class AboutServiceTabularInlain(admin.TabularInline):
@@ -36,3 +36,6 @@ class ChooseAdmin(admin.ModelAdmin):
 class ContactAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'text')
     
+@admin.register(WorkProcessStep)
+class WorkProcessStepAdmin(admin.ModelAdmin):
+    list_display = ('step_number', 'title')

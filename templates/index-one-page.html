@@ -495,7 +495,7 @@
                             </li>
                         </ul>
 
-                        <a href="about-us.html" class="rr-btn">
+                        <a href="{% url 'about' %}" class="rr-btn">
                             <span class="btn-wrap">
                                 <span class="text-one">More About Us</span>
                                 <span class="text-two">More About Us</span>
@@ -523,7 +523,7 @@
                 </div>
                 <div class="col-xl-6">
                     <div class="d-flex justify-content-xl-end mt-xs-20 mt-sm-20 mt-md-20 mt-lg-20 justify-content-center rr-mb-13-hide-xl">
-                        <a href="about-us.html" class="rr-btn">
+                        <a href="{% url 'about' %}" class="rr-btn">
                             <span class="btn-wrap">
                                 <span class="text-one">Subscribe Now</span>
                                 <span class="text-two">Subscribe Now</span>
@@ -843,7 +843,7 @@
                             </div>
                         </div>
 
-                        <a href="about-us.html" class="rr-btn">
+                        <a href="{% url 'about' %}" class="rr-btn">
                             <span class="btn-wrap">
                                 <span class="text-one">More About Us</span>
                                 <span class="text-two">More About Us</span>
@@ -878,7 +878,7 @@
             <div class="row mb-minus-30">
                 <div class="col-xl-4 col-md-6">
                     <div class="team__item mb-30">
-                        <a href="team-details.html" class="team__item-media d-block" data-cursor-text="View">
+                        <a href="{% url 'team_detail'  team.id %}" class="team__item-media d-block" data-cursor-text="View">
                             <img src="assets/imgs/team/team-item-1.jpg" alt="image not found" class="img-fluid">
                         </a>
 
@@ -891,7 +891,7 @@
                             </div>
 
                             <div class="team__item-text__left">
-                                <h4 class="team__item-title rr-fw-bold color-white mb-0"><a href="team-details.html">James Williams</a></h4>
+                                <h4 class="team__item-title rr-fw-bold color-white mb-0"><a href="{% url 'team_detail'  team.id %}">James Williams</a></h4>
                                 <span class="team__item-subtitle color-white">Operations Manager</span>
                             </div>
                             <div class="team__item-text__right">
@@ -903,7 +903,7 @@
 
                 <div class="col-xl-4 col-md-6">
                     <div class="team__item mb-30">
-                        <a href="team-details.html" class="team__item-media d-block" data-cursor-text="View">
+                        <a href="{% url 'team_detail'  team.id %}" class="team__item-media d-block" data-cursor-text="View">
                             <img src="assets/imgs/team/team-item-2.jpg" alt="image not found" class="img-fluid">
                         </a>
 
@@ -916,7 +916,7 @@
                             </div>
 
                             <div class="team__item-text__left">
-                                <h4 class="team__item-title rr-fw-bold color-white mb-0"><a href="team-details.html">Anthony Notson</a></h4>
+                                <h4 class="team__item-title rr-fw-bold color-white mb-0"><a href="{% url 'team_detail'  team.id %}">Anthony Notson</a></h4>
                                 <span class="team__item-subtitle color-white">Production Manager</span>
                             </div>
                             <div class="team__item-text__right">
@@ -928,7 +928,7 @@
 
                 <div class="col-xl-4 col-md-6">
                     <div class="team__item mb-30">
-                        <a href="team-details.html" class="team__item-media d-block" data-cursor-text="View">
+                        <a href="{% url 'team_detail'  team.id %}" class="team__item-media d-block" data-cursor-text="View">
                             <img src="assets/imgs/team/team-item-3.jpg" alt="image not found" class="img-fluid">
                         </a>
 
@@ -941,7 +941,7 @@
                             </div>
 
                             <div class="team__item-text__left">
-                                <h4 class="team__item-title rr-fw-bold color-white mb-0"><a href="team-details.html">Joseph Crawford</a></h4>
+                                <h4 class="team__item-title rr-fw-bold color-white mb-0"><a href="{% url 'team_detail'  team.id %}">Joseph Crawford</a></h4>
                                 <span class="team__item-subtitle color-white">Chief Marketing</span>
                             </div>
                             <div class="team__item-text__right">
@@ -1425,7 +1425,7 @@
                             </div>
                             <div class="footer__link">
                                 <ul>
-                                    <li><a href="about-us.html">About Us</a></li>
+                                    <li><a href="{% url 'about' %}">About Us</a></li>
                                     <li><a href="team.html">Our Team</a></li>
                                     <li><a href="project.html">Testimonials</a></li>
                                     <li><a href="blog.html">Blog Grid</a></li>

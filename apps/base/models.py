@@ -224,3 +224,17 @@ class Contact(models.Model):
     class Meta:
         verbose_name='Запросы о обратоной связи'
         verbose_name_plural='Запросы о обратоной связи'
+        
+class WorkProcessStep(models.Model):
+    step_number = models.PositiveIntegerField(verbose_name="Номер шага")
+    title = models.CharField(max_length=255, verbose_name="Заголовок")
+    description = models.TextField(verbose_name="Описание")
+    icon = models.ImageField(upload_to='icons/', verbose_name="Иконка", help_text="Загрузите иконку для этого шага процесса")
+
+    class Meta:
+        ordering = ['step_number']
+        verbose_name = "Шаг рабочего процесса"
+        verbose_name_plural = "Шаги рабочего процесса"
+
+    def __str__(self):
+        return f"Шаг {self.step_number}: {self.title}"
