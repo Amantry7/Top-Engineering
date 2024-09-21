@@ -68,10 +68,10 @@
                                                 <a href="{% url 'project'%}">Проэкты</a>
                                             </li>
                                             <li class="">
-                                                <a href="blog.html">Новости</a>
+                                                <a href="{% url 'news' %}">Новости</a>
 
                                             </li>
-                                            <li><a href="contact.html">Контакты</a></li>
+                                            <li><a href="{% url 'contact'%}">Контакты</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -87,7 +87,7 @@
                                     </button>
 
                                     <div class="header__btn-wrap d-none d-md-inline-flex">
-                                        <a href="contact.html" class="rr-btn__header">
+                                        <a href="{% url 'contact' %}" class="rr-btn__header">
                                              <span class="btn-wrap">
                                                 <span class="text-one">Связатся</span>
                                                 <span class="text-two">Связатся</span>

@@ -92,11 +92,15 @@ class News(models.Model):
         upload_to='news/',
         verbose_name='Фотография'
     )
+    desc = models.TextField(
+        verbose_name='Описание',
+        blank=True, null=True
+    )
     auther = models.CharField(
         max_length=244,
         verbose_name='Автор'
     )
-    created_at = models.DateTimeField(
+    created_at = models.DateField(
         verbose_name='Дата',
         auto_created=True
     )

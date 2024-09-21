@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from apps.base.models import Setting, Slider, About
 from apps.project.models import Project, Service
@@ -30,3 +30,22 @@ def about(request):
     news = News.objects.all()
     part = Partner.objects.all()
     return render(request, 'base/about-us.html', locals())
+
+def news(request):
+    setting = Setting.objects.latest('id')
+    about = About.objects.latest('id')
+    news = News.objects.all()
+    part = Partner.objects.all()
+    return render(request, 'blog.html', locals())
+
+def news_detail(request, id):
+    news = get_object_or_404(News, id=id)
+    setting = Setting.objects.latest('id')
+    about = About.objects.latest('id')
+    return render(request, 'blog-details.html', locals())
+
+def contact(request):
+    setting = Setting.objects.latest('id')
+    about = About.objects.latest('id')
+    part = Partner.objects.all()
+    return render(request, 'contact.html', locals())
