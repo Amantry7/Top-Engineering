@@ -90,4 +90,35 @@ def contact(request):
     part = Partner.objects.all()
     panel_service = Service.objects.all()
     steps = WorkProcessStep.objects.all()
-    return render(request, 'contact.html', locals())
+
+    error_message = None
+
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        phone = request.POST.get('tel')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        text = request.POST.get('textarea')
+
+        # Проверяем, есть ли уже контакт с таким email
+        if not Contact.objects.filter(email=email).exists():
+            Contact.objects.create(
+                name=name,
+                phone=phone,
+                email=email,
+                subject=subject,
+                text=text
+            )
+            # Перенаправление на ту же страницу для избежания повторной отправки формы
+            return redirect('contact')  # Убедитесь, что 'contact' - это имя пути в urls.py
+        else:
+            error_message = "Контакт с таким email уже существует."
+
+    return render(request, 'contact.html', {
+        'setting': setting,
+        'about': about,
+        'part': part,
+        'panel_service': panel_service,
+        'steps': steps,
+        'error_message': error_message,
+    })

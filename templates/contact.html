@@ -251,51 +251,55 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="get-in-touch__contact-form">
-                        <h3 class="mb-20">Свезатся</h3>
-
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="get-in-touch__form-input">
-                                    <input name="name" id="lname" type="text" placeholder="ФИО*">
-                                </div>
-                            </div>
-
-                            <div class="col-xl-6">
-                                <div class="get-in-touch__form-input">
-                                    <input name="email" id="email" type="email" placeholder="Почта*">
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="get-in-touch__form-input-select d-flex flex-column">
-                                    <select name="subject" id="subject">
-                                        <option value="">subject *</option>
-                                        <option value="order">Event Order</option>
-                                        <option value="objection">Objection</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-sm-12">
-                                <div class="get-in-touch__form-input">
-                                    <div class="validation__wrapper-up position-relative">
-                                        <textarea name="textarea" id="textarea" placeholder="Сообщение*"></textarea>
+                        <h3 class="mb-20">Связаться</h3>
+    
+                        <form method="POST" action="">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="get-in-touch__form-input">
+                                        <input name="name" id="lname" type="text" placeholder="ФИО*">
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="col-12">
-                                <button type="submit" class="rr-btn">
+    
+                                <div class="col-xl-6">
+                                    <div class="get-in-touch__form-input">
+                                        <input name="email" id="email" type="email" placeholder="Почта*">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="get-in-touch__form-input-select d-flex flex-column">
+                                        <select name="subject" id="subject">
+                                            <option value="">subject *</option>
+                                            <option value="order">Event Order</option>
+                                            <option value="objection">Objection</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="get-in-touch__form-input">
+                                        <div class="validation__wrapper-up position-relative">
+                                            <textarea name="textarea" id="textarea" placeholder="Сообщение*"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="col-12">
+                                    <button type="submit" class="rr-btn">
                                         <span class="btn-wrap">
                                             <span class="text-one">Отправить</span>
                                             <span class="text-two">Отправить</span>
                                         </span>
-                                </button>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    
     <!--get-in-touch-->
 
     <!-- our-clients area start -->

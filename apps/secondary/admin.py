@@ -36,7 +36,3 @@ class PartnerAdmin(admin.ModelAdmin):
 class ProgresAdmin(admin.ModelAdmin):
     list_display = ('title', 'desc')
     
-@admin.register(Pricing)
-class PricingAdmin(admin.ModelAdmin):
-    list_display = ('title', 'price')
-    inlines = [PricingSeviceTaburaInline]
