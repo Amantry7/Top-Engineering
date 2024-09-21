@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from apps.base.models import Setting, Slider, About, AboutService, AboutState, AboutSkill, Choose
+from apps.base.models import Setting, Slider, About, AboutService, AboutState, AboutSkill, Choose, Contact
 # Register your models here.
 
 class AboutServiceTabularInlain(admin.TabularInline):
@@ -31,4 +31,8 @@ class SliderAdmin(admin.ModelAdmin):
 @admin.register(Choose)
 class ChooseAdmin(admin.ModelAdmin):
     list_display = ('title', 'subtitle')
+    
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'text')
     

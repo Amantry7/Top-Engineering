@@ -283,7 +283,7 @@
                             
                         </ul>
 
-                        <a href="about-us.html" class="rr-btn">
+                        <a href="{% url 'about' %}" class="rr-btn">
                             <span class="btn-wrap">
                                 <span class="text-one">Подробнее о нас</span>
                                 <span class="text-two">Подробнее о нас</span>
@@ -310,7 +310,7 @@
                 </div>
                 <div class="col-xl-6">
                     <div class="d-flex justify-content-xl-end mt-xs-20 mt-sm-20 mt-md-20 mt-lg-20 justify-content-center rr-mb-13-hide-xl">
-                        <a href="about-us.html" class="rr-btn">
+                        <a href="{% url 'about' %}" class="rr-btn">
                             <span class="btn-wrap">
                                 <span class="text-one">Подпишитесь сейчас</span>
                                 <span class="text-two">Подпишитесь сейчас</span>
@@ -387,7 +387,7 @@
                 <div class="col-xl-5">
                     <div class="d-flex flex-column justify-content-xl-end mt-xs-20 mt-sm-20 mt-md-20 mt-lg-20 justify-content-center text-center text-xl-start">
                         <p class="mb-30 mb-xs-20">Нам всегда приятно видеть, как наша работа положительно влияет на наших клиентов, и мы рады делиться их успешными историями.</p>
-                        <a class="rr-a-16 justify-content-center justify-content-xl-start" href="project.html">Изучить кейсы<img src="{% static 'assets/imgs/icon/arrow-right.svg' %}" alt=""></a>
+                        <a class="rr-a-16 justify-content-center justify-content-xl-start" href="{% url 'project' %}">Изучить кейсы<img src="{% static 'assets/imgs/icon/arrow-right.svg' %}" alt=""></a>
                     </div>
                 </div>
             </div>
@@ -412,7 +412,7 @@
                         </div>
                         <div class="latest-project__item-content">
                             <div class="icon__wrapper">
-                                <a href="project-details.html" class="icon">
+                                <a href="{% url 'project_detail' proj.id %}" class="icon">
                                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M22.4574 0H4.31707C3.46373 0 2.76981 0.693784 2.76981 1.54695C2.76981 2.40012 3.46373 3.0939 4.31707 3.0939H18.7159L0.453626 21.3573C-0.151209 21.962 -0.151209 22.9417 0.453626 23.5465C1.05846 24.1512 2.03839 24.1512 2.64322 23.5465L20.9055 5.28307V19.6791C20.9055 20.5323 21.5994 21.226 22.4527 21.226C23.3061 21.226 24 20.5323 24 19.6791V1.54695C24.0047 0.693784 23.3107 0 22.4574 0Z" fill="white"/>
                                     </svg>
@@ -420,7 +420,7 @@
                             </div>
                             <div class="text">
                                 <span class="subtitle color-white d-block">{{ proj.subtitle }}</span>
-                                <h4 class="title color-white"><a href="project-details.html">{{ proj.title }}</a></h4>
+                                <h4 class="title color-white"><a href="{% url 'project_detail' proj.id %}">{{ proj.title }}</a></h4>
                             </div>
                         </div>
                     </div>
@@ -454,7 +454,7 @@
                             {% endfor %}
                         </div>
 
-                        <a href="about-us.html" class="rr-btn">
+                        <a href="{% url 'about' %}" class="rr-btn">
                             <span class="btn-wrap">
                                 <span class="text-one">Подробне о нас</span>
                                 <span class="text-two">Подробне о нас</span>
@@ -489,7 +489,7 @@
                 {% for team in team %}
                 <div class="col-xl-4 col-md-6">
                     <div class="team__item mb-30">
-                        <a href="team-details.html" class="team__item-media d-block" data-cursor-text="View">
+                        <a href="{% url 'team_detail' team.id%}" class="team__item-media d-block" data-cursor-text="View">
                             <img src="{{team.image.url}}" alt="image not found" class="img-fluid">
                         </a>
 
@@ -501,7 +501,7 @@
                             </div>
 
                             <div class="team__item-text__left">
-                                <h4 class="team__item-title rr-fw-bold color-white mb-0"><a href="team-details.html">{{team.name}}</a></h4>
+                                <h4 class="team__item-title rr-fw-bold color-white mb-0"><a href="{% url 'team_detail' team.id %}">{{team.name}}</a></h4>
                                 <span class="team__item-subtitle color-white">{{team.rols}}</span>
                             </div>
                             
@@ -526,7 +526,7 @@
                         </div>
                         <div class="contact-list__item-text">
                             <h4 class="title">Телефон</h4>
-                            <a href="tel:556545455418">{{setting.phone}}</a>
+                            <a href="tel:{{setting.phone}}">{{setting.phone}}</a>
                         </div>
                     </div>
                 </div>
@@ -548,7 +548,7 @@
                         </div>
                         <div class="contact-list__item-text">
                             <h4 class="title">Адрес</h4>
-                            <a href="https://maps.app.goo.gl/1pAfbZwztHjEGrG88">{{setting.address}}</a>
+                            <a href="">{{setting.address}}</a>
                         </div>
                     </div>
                 </div>
@@ -591,6 +591,7 @@
 
                     <div class="request-a-quote__right">
                         <form id="request-a-quote__form" class="request-a-quote__form" method="POST">
+                            {% csrf_token %}
                             <h3 class="text-center mb-30"></h3>
                             <div class="row">
                                 <div class="col-xl-6">
@@ -764,18 +765,18 @@
                             {% for news in news %}
                             <div class="swiper-slide">
                                 <div class="blog__item mb-60 mt-60">
-                                    <a href="blog-details.html" data-cursor-text="View" class="blog__item-media d-block">
+                                    <a href="{% url 'news_detail' news.id %}" data-cursor-text="View" class="blog__item-media d-block">
                                         <img src="{{news.image.url}}" alt="image not found" class="img-fluid">
                                     </a>
                                     <div class="blog__item-text">
                                         <div class="blog__item-meta mb-10">
-                                            <a href="blog-details.html">
+                                            <a href="{% url 'news_detail' news.id %}">
                                                 <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M14 14.9999V13.4444C14 12.6192 13.6576 11.8279 13.0481 11.2445C12.4386 10.661 11.612 10.3333 10.75 10.3333H4.25C3.38805 10.3333 2.5614 10.661 1.9519 11.2445C1.34241 11.8279 1 12.6192 1 13.4444V14.9999" stroke="#1E90FF	" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                     <path d="M7.5 7.22222C9.29493 7.22222 10.75 5.82933 10.75 4.11111C10.75 2.39289 9.29493 1 7.5 1C5.70507 1 4.25 2.39289 4.25 4.11111C4.25 5.82933 5.70507 7.22222 7.5 7.22222Z" stroke="#1E90FF	" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </svg>
                                                 By {{news.auther}}</a>
-                                            <a href="blog-details.html">
+                                            <a href="{% url 'news_detail' news.id %}">
                                                 <svg width="15" height="16" viewBox="0 0 15 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M12.5556 2.3999H2.44444C1.6467 2.3999 1 3.0267 1 3.7999V13.5999C1 14.3731 1.6467 14.9999 2.44444 14.9999H12.5556C13.3533 14.9999 14 14.3731 14 13.5999V3.7999C14 3.0267 13.3533 2.3999 12.5556 2.3999Z" stroke="#1E90FF	" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                     <path d="M10.3887 1V3.8" stroke="#1E90FF	" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -785,9 +786,9 @@
                                                 {{news.created_at}}</a>
                                         </div>
 
-                                        <h4 class="blog__item-title mb-25 mb-xs-15 rr-fw-bold text-capitalize"><a href="blog-details.html">{{news.title}}</a></h4>
+                                        <h4 class="blog__item-title mb-25 mb-xs-15 rr-fw-bold text-capitalize"><a href="{% url 'news_detail' news.id %}">{{news.title}}</a></h4>
 
-                                        <a class="blog__item-readmore" href="blog-details.html">Подробне
+                                        <a class="blog__item-readmore" href="{% url 'news_detail' news.id %}">Подробне
                                             <svg width="20" height="11" viewBox="0 0 20 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M1 5.5L19 5.5" stroke="#6A6A6A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                 <path d="M13.75 1L19 5.5L13.75 10" stroke="#6A6A6A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

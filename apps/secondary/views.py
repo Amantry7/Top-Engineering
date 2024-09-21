@@ -7,6 +7,7 @@ from apps.project.models import Service
 def pricing(request):
     setting = Setting.objects.latest('id')
     pricing = Pricing.objects.all()
+    panel_service = Service.objects.all()
     partner = Partner.objects.all()
     about = About.objects.latest('id')
     return render(request, 'pricing.html', locals())
@@ -14,6 +15,7 @@ def pricing(request):
 def team(request):
     setting = Setting.objects.latest('id')
     about = About.objects.latest('id')
+    panel_service = Service.objects.all()
     team = Team.objects.all()
     partner = Partner.objects.all()
     return render(request, 'team.html', locals())
@@ -22,12 +24,14 @@ def team_detail(request, id):
     team = get_object_or_404(Team, id=id)
     setting = Setting.objects.latest('id')
     about = About.objects.latest('id')
+    panel_service = Service.objects.all()
     partner = Partner.objects.all()
     return render(request, 'team-details.html', locals())
 
 def service(request):
     setting = Setting.objects.latest('id')
     about = About.objects.latest('id')
+    panel_service = Service.objects.all()
     partner = Partner.objects.all()
     service = Service.objects.all()
     choose = Choose.objects.all()

@@ -199,3 +199,28 @@ class Choose(models.Model):
     class Meta:
         verbose_name='Почему выберают нас'
         verbose_name_plural='Почему выберают нас'
+        
+class Contact(models.Model):
+    name = models.CharField(
+        max_length=255,
+        verbose_name='Имя'
+    )
+    phone = models.CharField(
+        max_length=255,
+        verbose_name='Номер телефона'
+    )
+    email = models.EmailField(
+        verbose_name='Почта'
+    )
+    subject = models.CharField(
+        max_length=255,
+        verbose_name='Запрос'
+    )
+    text = models.TextField(
+        verbose_name='Сообщение'
+    )
+    def __str__(self):
+        return self.name
+    class Meta:
+        verbose_name='Запросы о обратоной связи'
+        verbose_name_plural='Запросы о обратоной связи'

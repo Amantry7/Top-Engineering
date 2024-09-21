@@ -32,19 +32,18 @@
                         <div class="footer__widget footer__widget-item-1">
                             <div class="footer__logo mb-35 mb-xs-30">
                                 <a href="index.html">
-                                    <img class="img-fluid" src="{% static 'assets/imgs/logo.png' %}" alt="logo not found">
+                                    <img class="img-fluid" src="{{setting.logo.url}}" alt="logo not found">
                                 </a>
                             </div>
 
                             <div class="footer__content mb-30 mb-xs-35">
-                                <p class="mb-0">Мы предлагаем высококачественные услуги в сфере проектирования электроэнергетических объектов. Наш опыт и стремление к инновациям помогают нам реализовывать самые сложные проекты.</p>
+                                <p class="mb-0">{{setting.desc}}</p>
                             </div>
 
                             <div class="footer__social"> 
-                                <a href="https://www.facebook.com/"><img src="{% static 'assets/imgs/icon/facebook.svg' %}" alt="image not found"></a>
-                                <a href="https://twitter.com/"><img src="{% static 'assets/imgs/icon/twitter.svg' %}" alt="image not found"></a>
-                                <a href="https://www.linkedin.com/"><img src="{% static 'assets/imgs/icon/linkedin.svg' %}" alt="image not found"></a>
-                                <a href="https://www.instagram.com/"><img src="{% static 'assets/imgs/icon/instagram.svg' %}" alt="image not found"></a>
+                                <a href="{{setting.facebook}}"><img src="{% static 'assets/imgs/icon/facebook.svg' %}" alt="image not found"></a>
+                                <a href="{{setting.linkedin}}"><img src="{% static 'assets/imgs/icon/linkedin.svg' %}" alt="image not found"></a>
+                                <a href="{{setting.instagram}}"><img src="{% static 'assets/imgs/icon/instagram.svg' %}" alt="image not found"></a>
                             </div>
                         </div>
                     </div>
@@ -56,11 +55,10 @@
                             </div>
                             <div class="footer__link">
                                 <ul>
-                                    <li><a href="about-us.html">О нас</a></li>
-                                    <li><a href="team.html">Наша комманда</a></li>
-                                    <li><a href="project.html">Отзывы</a></li>
-                                    <li><a href="blog.html">Новости</a></li>
-                                    <li><a href="project.html">Проэкты</a></li>
+                                    <li><a href="{% url 'about'%}">О нас</a></li>
+                                    <li><a href="{% url 'team' %}">Наша комманда</a></li>
+                                    <li><a href="{% url 'news' %}">Новости</a></li>
+                                    <li><a href="{% url 'project' %}">Проэкты</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -74,11 +72,10 @@
 
                             <div class="footer__link">
                                 <ul>
+                                {% for service in panel_service %}
                                    <li><a href="service-details.html">Общестроительные работы</a></li>
-                                   <li><a href="service-details.html">Обслуживание объектов</a></li>
-                                   <li><a href="service-details.html">Управление проектами</a></li>
-                                   <li><a href="service-details.html">Виртуальный дизайн и строительство</a></li>
-                                   <li><a href="service-details.html">Предпроектные работы</a></li>
+                                   {% endfor %}
+                                   
                                 </ul>
                             </div>
                         </div>
@@ -98,7 +95,7 @@
                                         </span>
                                         <span class="text">
                                             <span>Телефон</span>
-                                            <a href="tel:+996556121361"> +996 (556) 12 13 61</a>
+                                            <a href="tel:{{setting.phone}}">{{setting.phone}}</a>
                                         </span>
                                     </li>
                                     <li>
@@ -107,7 +104,7 @@
                                         </span>
                                         <span class="text">
                                             <span>Электронная почта</span>
-                                            <a href="mailto:nurmahandd@mail.ru">nurmahandd@mail.ru</a>
+                                            <a href="mailto:{{setting.email}}">{{setting.email}}</a>
                                         </span>
                                     </li>
                                     <li class="address">
@@ -115,7 +112,7 @@
                                             <img src="{% static 'assets/imgs/icon/map.svg' %}" alt="">
                                         </span>
                                         <span class="text">
-                                            <a target="_blank" href="mailto:nurmahandd@mail.ru"> г. Бишкек, пр. Чуй 164 А, каб. 307
+                                            <a target="_blank" href="mailto:{{setting.email}}"> {{setting.address}}
                                             </a>
                                         </span>
                                     </li>
