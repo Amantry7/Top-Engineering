@@ -131,3 +131,6 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN")
+GROUP_ID = os.environ.get('GROUP_ID')

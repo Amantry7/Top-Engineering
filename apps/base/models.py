@@ -212,10 +212,7 @@ class Contact(models.Model):
     email = models.EmailField(
         verbose_name='Почта'
     )
-    subject = models.CharField(
-        max_length=255,
-        verbose_name='Запрос'
-    )
+    
     text = models.TextField(
         verbose_name='Сообщение'
     )

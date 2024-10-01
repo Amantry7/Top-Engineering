@@ -3,7 +3,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from apps.base.models import Setting, Slider, About, Contact, WorkProcessStep
 from apps.project.models import Project, Service
 from apps.categories.models import Category
+from apps.telegram.views import send_telegram_message
 from apps.secondary.models import Team, Reviews, News, Partner
+import asyncio
 # Create your views here.
 
 def index(request):
@@ -22,16 +24,16 @@ def index(request):
         name = request.POST.get('name')
         phone = request.POST.get('tel')
         email = request.POST.get('email')
-        subject = request.POST.get('inquiries')
         text = request.POST.get('textarea')
         if not Contact.objects.filter(email=email).exists():
             Contact.objects.create(
                 name=name,
                 phone=phone,
                 email=email,
-                subject=subject,
                 text=text
             )
+            telegram_message = f"Новый контакт:\nФИО: {name}\nТелефон: {phone}\nEmail: {email}\nСообщение: {text}"
+            asyncio.run(send_telegram_message(telegram_message))
             redirect('index')
         else:
             error_message = "Контакт с таким email уже существует."
@@ -54,16 +56,16 @@ def about(request):
         name = request.POST.get('name')
         phone = request.POST.get('tel')
         email = request.POST.get('email')
-        subject = request.POST.get('inquiries')
         text = request.POST.get('textarea')
         if not Contact.objects.filter(email=email).exists():
             Contact.objects.create(
                 name=name,
                 phone=phone,
                 email=email,
-                subject=subject,
                 text=text
             )
+            telegram_message = f"Новый контакт:\nФИО: {name}\nТелефон: {phone}\nEmail: {email}\nСообщение: {text}"
+            asyncio.run(send_telegram_message(telegram_message))
             redirect('index')
         else:
             error_message = "Контакт с таким email уже существует."
@@ -84,6 +86,7 @@ def news_detail(request, id):
     about = About.objects.latest('id')
     return render(request, 'blog-details.html', locals())
 
+
 def contact(request):
     setting = Setting.objects.latest('id')
     about = About.objects.latest('id')
@@ -95,22 +98,25 @@ def contact(request):
 
     if request.method == 'POST':
         name = request.POST.get('name')
-        phone = request.POST.get('tel')
+        phone = request.POST.get('phone')  # Updated 'tel' to 'phone' to match form input
         email = request.POST.get('email')
-        subject = request.POST.get('subject')
         text = request.POST.get('textarea')
 
-        # Проверяем, есть ли уже контакт с таким email
+        # Check if contact with this email already exists
         if not Contact.objects.filter(email=email).exists():
             Contact.objects.create(
                 name=name,
                 phone=phone,
                 email=email,
-                subject=subject,
                 text=text
             )
-            # Перенаправление на ту же страницу для избежания повторной отправки формы
-            return redirect('contact')  # Убедитесь, что 'contact' - это имя пути в urls.py
+
+            # Send message to Telegram group
+            telegram_message = f"Новый контакт:\nФИО: {name}\nТелефон: {phone}\nEmail: {email}\nСообщение: {text}"
+            asyncio.run(send_telegram_message(telegram_message))
+
+            # Redirect to avoid duplicate form submission
+            return redirect('contact')
         else:
             error_message = "Контакт с таким email уже существует."
 
