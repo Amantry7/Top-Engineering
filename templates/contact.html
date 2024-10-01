@@ -59,9 +59,7 @@
                 <div class="search__wrapper">
                     <div class="search__top d-flex justify-content-between align-items-center">
                         <div class="search__logo">
-                            <a href="index.html">
-                                <img src="assets/imgs/logo/logo-white.svg' %}" alt="img">
-                            </a>
+                           
                         </div>
                         <div class="search__close">
                             <button type="button" class="search__close-btn search-close-btn">
@@ -75,23 +73,85 @@
                         </div>
                     </div>
                     <div class="search__form">
-                        <form action="#">
-                            <div class="search__input">
-                                <input class="search-input-field" type="text" placeholder="Type here to search...">
-                                <span class="search-focus-border"></span>
-                                <button type="submit">
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                        <path
-                                                d="M9.55 18.1C14.272 18.1 18.1 14.272 18.1 9.55C18.1 4.82797 14.272 1 9.55 1C4.82797 1 1 4.82797 1 9.55C1 14.272 4.82797 18.1 9.55 18.1Z"
-                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                                                stroke-linejoin="round" />
-                                        <path d="M19.0002 19.0002L17.2002 17.2002" stroke="currentColor" stroke-width="1.5"
-                                              stroke-linecap="round" stroke-linejoin="round" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </form>
+                        <div class="search__input">
+                            <input id="search-input" class="search-field" type="text" placeholder="Начните вводить для поиска...">
+                        </div>
+                        <div class="search-results"></div>
                     </div>
+                    
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var searchInput = document.querySelector('.search-field');
+        var searchResults = document.querySelector('.search-results');
+    
+        // Отслеживаем ввод в поле поиска
+        searchInput.addEventListener('input', function () {
+            searchResults.classList.add('showSearch');
+            performSearch();
+        });
+    
+        function performSearch() {
+            var query = searchInput.value.trim();  // Убираем пробелы в начале и конце
+    
+            if (query.length > 2) {
+                // Отправляем AJAX-запрос на сервер
+                fetch('/project/search/?query=' + encodeURIComponent(query))
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Ошибка сети');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Очищаем предыдущие результаты
+                        searchResults.innerHTML = '';
+                        let foundSomething = false;
+    
+                        // Отображаем результаты поиска по проектам
+                        if (data.project && data.project.length > 0) {
+                            foundSomething = true;
+                            searchResults.innerHTML += '<h3>Проекты</h3>';
+                            data.project.forEach(function(project) {
+                                searchResults.innerHTML += `
+                                    <div>
+                                        <a href="/project/${project.id}/" class="search-result-link">
+                                            <strong>${project.title}</strong>
+                                        </a>
+                                    </div>`;
+                            });
+                        }
+    
+                        // Отображаем результаты поиска по новостям
+                        if (data.news && data.news.length > 0) {
+                            foundSomething = true;
+                            searchResults.innerHTML += '<h3>Новости</h3>';
+                            data.news.forEach(function(news) {
+                                searchResults.innerHTML += `
+                                    <div>
+                                        <a href="/news/${news.id}/" class="search-result-link">
+                                            <strong>${news.title}</strong>
+                                        </a>
+                                    </div>`;
+                            });
+                        }
+    
+                        // Если ничего не найдено
+                        if (!foundSomething) {
+                            searchResults.innerHTML = '<p>Ничего не найдено.</p>';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Ошибка при выполнении запроса:', error);
+                        searchResults.innerHTML = 'Произошла ошибка при поиске. Пожалуйста, попробуйте позже.';
+                    });
+            } else {
+                // Очищаем результаты, если введено меньше 3 символов
+                searchResults.innerHTML = '';
+            }
+        }
+    });
+</script>
                 </div>
             </div>
         </div>
