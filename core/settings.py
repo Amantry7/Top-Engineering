@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'apps.project',
     'apps.categories',
     'apps.secondary',
+    'apps.telegram',
 ]
 
 MIDDLEWARE = [
