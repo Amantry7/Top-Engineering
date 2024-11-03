@@ -413,8 +413,8 @@ svg path {
   }
 
   .header__logo .logo img {
-      width: 120px; /* Устанавливаем меньшую ширину для логотипа */
-      height: auto; /* Сохраняем пропорции изображения */
+      width: 120px; 
+      height: auto; 
   }
 }
 
